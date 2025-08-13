@@ -1,0 +1,33 @@
+package com.offersell.controller;
+
+import com.offersell.model.Usuario;
+import com.offersell.service.UsuarioService;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/usuarios")
+@CrossOrigin("*")
+public class UsuarioController {
+
+    private final UsuarioService usuarioService;
+
+    public UsuarioController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
+
+    @PostMapping("/registro")
+    public Usuario registrar(@RequestBody Usuario usuario) {
+        return usuarioService.registrar(usuario);
+    }
+
+    @PostMapping("/login")
+    public Usuario iniciarSesion(@RequestParam String correo, @RequestParam String password) {
+        return usuarioService.iniciarSesion(correo, password);
+    }
+
+    @GetMapping
+    public List<Usuario> listar() {
+        return usuarioService.listarUsuarios();
+    }
+}

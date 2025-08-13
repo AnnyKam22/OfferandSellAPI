@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar sesión - Offer&Sell</title>
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body class="auth-wrapper">
+
+  <section class="auth-card">
+    <div class="brand-row">
+      <img src="/img/logo-offersell.png" alt="Offer&Sell" class="brand-logo">
+      <h1 class="app-title">Offer&Sell</h1>
+    </div>
+
+    <nav class="auth-links">
+      <a href="/registro" class="link-accent">Registro</a>
+      <a href="/login" class="link-accent">Iniciar sesión</a>
+    </nav>
+
+    <h2 class="auth-title center">Iniciar sesión</h2>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+      <div class="toast-error">
+        <strong>ERROR</strong> <span><%= error %></span>
+      </div>
+    <% } %>
+
+    <form method="POST" action="/login" class="auth-form">
+      <label>Correo electrónico</label>
+      <input type="email" name="correo" placeholder="Introduce tu correo" required>
+
+      <label>Contraseña</label>
+      <div class="password-row">
+        <input type="password" name="password" placeholder="Introduce tu contraseña" required>
+        <button type="button" class="show-btn" onclick="togglePwd(this)" aria-label="Mostrar u ocultar contraseña">👁</button>
+      </div>
+
+      <button type="submit" class="btn-primary">Ingresar</button>
+    </form>
+
+    <div class="social-login">
+      <p class="center muted">o continúa con</p>
+      <div class="social-row">
+        <a class="social-btn fb" href="#" aria-label="Facebook">f</a>
+        <a class="social-btn ig" href="#" aria-label="Instagram">IG</a>
+        <a class="social-btn x"  href="#" aria-label="X">X</a>
+      </div>
+    </div>
+
+    <p class="muted center">¿No tienes cuenta? <a href="/registro" class="link-accent">Regístrate</a></p>
+  </section>
+
+  <script>
+    function togglePwd(btn){
+      const input = btn.parentElement.querySelector('input');
+      input.type = input.type === 'password' ? 'text' : 'password';
+      btn.classList.toggle('on');
+    }
+  </script>
+</body>
+</html>
+
+

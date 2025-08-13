@@ -1,0 +1,88 @@
+{
+  "info": {
+    "name": "Offer&Sell API (GA7-220501096-AA5-EV03)",
+    "_postman_id": "8f1e3da5-9c1a-4f42-9a88-collection-ev03",
+    "description": "Colección para probar la API de usuarios (registro, login y CRUD).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Crear usuario",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/usuarios",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nombre\": \"Ana\", \"contacto\": \"3001112233\", \"correo\": \"ana@example.com\", \"password\": \"123456\"}"
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"correo\": \"ana@example.com\", \"password\": \"123456\"}"
+        }
+      }
+    },
+    {
+      "name": "Listar usuarios",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/usuarios"
+      }
+    },
+    {
+      "name": "Obtener usuario por id",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/usuarios/:id"
+      }
+    },
+    {
+      "name": "Actualizar usuario",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/usuarios/:id",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nombre\": \"Ana Mar\\u00eda\"}"
+        }
+      }
+    },
+    {
+      "name": "Eliminar usuario",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/usuarios/:id"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ]
+}

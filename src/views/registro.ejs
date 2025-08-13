@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crear cuenta - Offer&Sell</title>
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body class="auth-wrapper">
+
+  <section class="auth-card">
+    <div class="brand-row">
+      <img src="/img/logo-offersell.png" alt="Offer&Sell" class="brand-logo">
+      <h1 class="app-title">Offer&Sell</h1>
+    </div>
+
+    <nav class="auth-links">
+      <a href="/" class="link-accent">Inicio</a>
+      <a href="/registro" class="link-accent">Registro</a>
+    </nav>
+
+    <h2 class="auth-title center">Crear una cuenta</h2>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+      <div class="toast-error">
+        <strong>ERROR</strong> <span><%= error %></span>
+      </div>
+    <% } %>
+
+    <form method="POST" action="/registro" class="auth-form">
+      <label>Usuario</label>
+      <input type="text" name="nombre" placeholder="tu nombre de usuario" required>
+
+      <label>Contacto</label>
+      <input type="text" name="contacto" placeholder="su número de contacto" inputmode="numeric" pattern="[0-9]*">
+
+      <label>Correo electrónico</label>
+      <input type="email" name="correo" placeholder="Su dirección de correo electrónico" required>
+
+      <label>Contraseña</label>
+      <div class="password-row">
+        <input type="password" name="password" placeholder="tu contraseña" required>
+        <button type="button" class="show-btn" onclick="togglePwd(this)" aria-label="Mostrar u ocultar contraseña">👁</button>
+      </div>
+
+      <label>Rescribir</label>
+      <input type="password" name="password2" placeholder="Comprueba tu contraseña para confirmar" required>
+
+      <label class="check">
+        <input type="checkbox" required>
+        Estoy de acuerdo con los <a href="#">Términos de servicio</a> y la <a href="#">Política de privacidad</a>.
+      </label>
+
+      <button type="submit" class="btn-primary">Continuar</button>
+    </form>
+
+    <div class="social-login">
+      <p class="center muted">o continúa con</p>
+      <div class="social-row">
+        <a class="social-btn fb" href="#" aria-label="Facebook">f</a>
+        <a class="social-btn ig" href="#" aria-label="Instagram">IG</a>
+        <a class="social-btn x"  href="#" aria-label="X">X</a>
+      </div>
+    </div>
+
+    <p class="muted center">¿Tienes una cuenta? <a href="/login" class="link-accent">Iniciar sesión</a></p>
+  </section>
+
+  <script>
+    function togglePwd(btn){
+      const input = btn.parentElement.querySelector('input');
+      input.type = input.type === 'password' ? 'text' : 'password';
+      btn.classList.toggle('on');
+    }
+  </script>
+</body>
+</html>
+
+
+
+

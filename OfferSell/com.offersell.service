@@ -1,0 +1,10 @@
+package com.offersell.service;
+
+import com.offersell.model.Usuario;
+import java.util.List;
+
+public interface UsuarioService {
+    Usuario registrar(Usuario usuario);
+    Usuario iniciarSesion(String correo, String password);
+    List<Usuario> listarUsuarios();
+}
